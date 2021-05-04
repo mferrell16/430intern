@@ -8,12 +8,12 @@ CREATE TABLE Login (
   Type int NOT NULL default 1,
   Fname text  NOT NULL default '',
   Lname text NOT NULL default '',
-  Password char(64) NOT NULL,
+  Password text NOT NULL,
   Company text, 
   GradTerm text, 
   PRIMARY KEY  (email)
 );
-INSERT INTO login(Email,Type, Password) VALUES ('admin',0,'8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918');
+
 
 DROP TABLE IF EXISTS postings;
 CREATE TABLE postings (

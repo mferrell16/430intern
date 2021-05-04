@@ -73,7 +73,7 @@ handleChange(event){
       if(this.state.user[0].username != undefined ){
           console.log("inside the if statement"); 
             jsCookie.set("name", this.state.user[0].username); 
-            jsCookie.set("zip", this.state.user[0].zipcode);
+            
             console.log("made a cookie");
           }
       
@@ -86,6 +86,9 @@ handleChange(event){
 
       <div style={{ margin: 20, padding: 20, border: '1px solid #DDD', textAlign: "center" }}>
         <Layout />
+
+
+
       <h2>login</h2>
         <form  onSubmit={this.handleSubmit}>
         <p>
@@ -93,7 +96,7 @@ handleChange(event){
         <input
           id='username'
           style = {this.rounded} 
-          placeholder='username'
+          placeholder='email'
           type='text'
           
           autoComplete='off'
@@ -124,7 +127,9 @@ handleChange(event){
        <p> </p> 
       <a href="/create">Forgot Password </a>
 
-      </form>
+      </form> 
+     
+
         {this.state.user ? <h2> {this.state.user[0].status}</h2> : null}
         </div>
 

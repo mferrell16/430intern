@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
+const argon2 = require("argon2");
 
 app.set("port", 8080);
 app.use(bodyParser.json({ type: "application/json" }));
@@ -137,6 +138,81 @@ app.get("/addpost", async (req, res) => {
 		res.json("Posting Submitted");
 
 	});
+
+
+
+app.get("/create", async (req, res) => {
+  let hash;
+  const username = req.query.username;
+  const password = req.query.password;
+   
+  try {
+    hash = await argon2.hash(password, "abcdefghijklmnop");
+    console.log("HASH " + hash);
+    const query = "INSERT INTO login (email, password) VALUES ($1, $2)";
+    const result = await pool.query(query, [username, hash]);
+    //console.log(result);
+    if (result.rowCount == 1) {
+      res.json("User created");
+    } else {
+      res.json("User not created");
+    }
+  } catch (err) {
+    console.log("ERROR " + err);
+    if (err.message.search("duplicate") != -1) {
+      res.json("Username taken");
+    }
+  }
+});
+
+
+app.get("/api/login", async (req, res) => {
+  console.log(req.query);
+  const username = req.query.username;
+  const password = req.query.password;
+  let status = "no"; 
+  try {
+    const query = "SELECT password from login where email = $1";
+    const result = await pool.query(query, [username]);
+    if (result.rowCount == 1) {
+      console.log(result.rows[0].password);
+      if (await argon2.verify(result.rows[0].password, password)) {
+        status = "Log In successful";
+      } else {
+        status ="Password incorrect";
+      }
+    } else {
+      status = "username not found";
+    }
+
+    const temp = "Select * from login where email = $1";
+    const resp = await pool.query(temp, [username]); 
+    if(resp.rowCount ==0 ){
+    	const names = [{status: status}];
+    	console.log(names);
+    	res.json(names);
+    }
+    else{
+
+    	const names = resp.rows.map(function(item) {
+					//let x =  item.lipid_total_g / item.kcal; 
+ 				return ({status: status, username: item.email});
+ 			});
+    	console.log(names);
+    	res.json(names);
+    }
+    
+
+  } catch (err) {
+    console.log("ERROR " + err);
+  }
+});
+
+
+
+
+
+
 
 
 app.get("/api", async (req, res) => {
