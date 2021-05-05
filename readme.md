@@ -12,7 +12,7 @@ $cd back
 
 $npm install express body-parser cors pg
 
-## Task 3: Set up front end with the following commands (inside 430intern directory).
+## Task 3: Set up front end with the following command (inside 430intern directory).
 
 $npm install
 
