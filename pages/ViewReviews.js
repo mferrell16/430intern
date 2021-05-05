@@ -2,6 +2,9 @@ import jsCookie from "js-cookie"
 import Layout from "../components/MyLayout.js";
 import axios from 'axios';
 import Router from "next/router";
+import { loc, postitle, comp, welcome, active, logo, sublogo, adbutt, postwrapper, body, topnav } from '../styles.module.css';
+import Link from 'next/link';
+
 
 const indexLink = {
   display: "inline",
@@ -47,12 +50,21 @@ class pending extends React.Component {
         <title> Reviews </title>
       </head>
       <div>
-      
-        <Layout>
-        <section>
-          <h1>View All Reviews  </h1>
-          <a href="\subreview">Submit A Review </a>
-        </section>
+       <body className={body}> 
+      <div className={logo}>UMW</div>
+      <div className={sublogo}>CPSC Major Opportunities</div>
+      <hr /> 
+       <br />
+    <div className={topnav}>
+        <a href="/">Home</a>
+        <a  href="ViewPosts">View Listings</a>
+        <a href="subpost">Submit a Posting</a>
+        <a className={active} href="ViewReviews">View Reviews</a>
+        <a href="subreview">Submit a Review</a>
+        <br />
+    </div>
+    <br /> 
+       
         <br></br>
         <br></br>
         <section>
@@ -62,12 +74,15 @@ class pending extends React.Component {
         this.state.postings.map(function(item, key) {
             
             return (<div key = {key}>
-                              <h3 > {item.position}  at {item.company} ({item.pdate})</h3>
-                      
-                            <p >Rating: {item.rating}/5 </p>
-                            <p >{item.review}</p>
-                             <br></br><div className="button-style">Flag</div>
-                </div>
+                  <div className = {postwrapper}> 
+                              <p className={postitle}> Review of: {item.position} at {item.company} ({item.positiondate}) </p>
+                              <p className={comp}> Rating: {item.stars}/5  </p> 
+                              <p >{item.review}</p>
+                             <br></br><button> Flag </button>
+                             </div> 
+                             <br /> 
+                              </div> 
+
               
               
               )}
@@ -79,83 +94,7 @@ class pending extends React.Component {
           <br />
           <br />
           <br /> <br />
-            <style jsx>{`
-              h1,
-              h2,
-              h3,
-              h4,
-              a,
-              td,
-              p {
-                color: #1f618d;          
-                font-family: "Arial";
-              }
-    
-              .button-style {
-                margin: auto auto;
-                cursor: pointer;
-                background-color: #228b22;
-                color: #ffffff;
-                width: 100px;
-                font-family: "Arial";
-          padding-top: -2;
-              }
-    
-              .text-style {
-                margin: auto auto;
-                width: 200px;
-              }
-    
-              input {
-                margin: auto auto;
-                width: 200px;
-              }
-    
-              .description {
-                font-family: "Arial";
-                font-size: "10px";
-              }
-    
-              ul {
-                padding: 0;
-              }
-    
-              li {
-                list-style: none;
-                margin: 5px 0;
-              }
-    
-              a {
-                text-decoration: none;
-                color: blue;
-              }
-    
-              a:hover {
-                opacity: 0.6;
-              }
-    
-              table {  
-                color: #333; /* Lighten up font color */
-                font-family: Helvetica, Arial, sans-serif; /* Nicer font */
-                width: 100%; 
-                border-collapse: 
-                collapse; 
-                border-spacing: 0;
-              }
-            
-              td, th { border: 1px solid #CCC; height: 30px; } /* Make cells a bit taller */
-            
-              th {  
-                background: #F3F3F3; /* Light grey background */
-                font-weight: bold; /* Make sure they're bold */
-              }
-            
-              td {  
-                background: #FAFAFA; /* Lighter grey background */
-                text-align: center; /* Center our text */
-              }
-            `}</style>
-        </Layout>
+            </body> 
       </div>
     </>
     );

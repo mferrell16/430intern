@@ -2,6 +2,8 @@ import Layout from "../components/MyLayout";
 import jsCookie from "js-cookie";
 import {subReview} from '../lib/urevs'
 import React from "react";
+import { loc, postitle, comp, formwrapper, welcome, active, logo, sublogo, adbutt, postwrapper, body, topnav } from '../styles.module.css';
+import Link from 'next/link';
 
 class Home extends React.Component {
   constructor(props) {
@@ -30,6 +32,20 @@ class Home extends React.Component {
   "margin-top": "6px",
   "margin-bottom": "16px",
   resize: "vertical"
+
+
+
+    }
+        this.newsquare2 = {
+ width: "100%",
+  padding: "12px", 
+  border: "1px solid #ccc",
+  "border-radius": "4px",
+  "box-sizing": "border-box",
+  "margin-top": "6px",
+  "margin-bottom": "16px",
+  resize: "vertical",
+  height: "200px"
 
 
 
@@ -135,10 +151,24 @@ handlepdateChange(event){
 
   render() {
     return (
-      <div style={{ margin: 20, padding: 20,  border: '1px solid #DDD' }}>
-        <Layout />
-      <h2 style= {this.h1}>Leave a Review </h2>
-        <form  onSubmit={this.handleSubmit}>
+      <div>
+         <body className={body}> 
+      <div className={logo}>UMW</div>
+      <div className={sublogo}>CPSC Major Opportunities</div>
+      <hr /> 
+       <br />
+    <div className={topnav}>
+        <a href="/">Home</a>
+        <a  href="ViewPosts">View Listings</a>
+        <a href="subpost">Submit a Posting</a>
+        <a href="ViewReviews">View Reviews</a>
+        <a className={active}  href="subreview">Submit a Review</a>
+        <br />
+    </div>
+    <br /> 
+      
+        <form className={formwrapper}  onSubmit={this.handleSubmit}>
+        <h2 style= {this.h1}>Submit a Review </h2>
         <p> Company Name 
         
         <input
@@ -189,7 +219,7 @@ handlepdateChange(event){
         <p> Review 
         <input
           id='review'
-          style = {this.newsquare}
+          style = {this.newsquare2}
           type='review'
           placeholder='I loved working for Company A'
           autoComplete='off'
@@ -197,7 +227,7 @@ handlepdateChange(event){
           onChange={this.handlereviewChange}
         /></p>
 
-        <p> Name 
+        <p> Name (will remain confidential)
         <input
           id='Name'
           style = {this.newsquare} 
@@ -208,7 +238,7 @@ handlepdateChange(event){
           onChange={this.handleNameChange}
         /></p>
 
- 			<p> Email
+ 			<p> Email (will remain confidential)
         <input
           id='Email'
           style = {this.newsquare}
@@ -226,8 +256,12 @@ handlepdateChange(event){
            >
             Submit
         </button>
+
+          {this.state.user ? <h3> {this.state.user} </h3> : null}
       </form>
-        {this.state.user ? <h3> {this.state.user} </h3> : null}
+      
+        
+</body>
         </div>
 
 );

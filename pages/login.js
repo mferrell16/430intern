@@ -1,7 +1,13 @@
 import Layout from "../components/MyLayout";
 import jsCookie from "js-cookie";
 import {getLogin} from '../lib/util'
+import Link from 'next/link';
 import React from "react";
+import { formwrapper, welcome, logo, sublogo, adbutt, centext, centextw1, body } from '../styles.module.css';
+
+
+
+
 
 class Home extends React.Component {
   constructor(props) {
@@ -34,6 +40,9 @@ class Home extends React.Component {
 	padding: "7px 0",
 	margin: "10px auto"
   }; 
+  this.pstyle ={
+    "color": "white"
+  };
 
     this.state={searchterm: ''}; 
     this.response = "no"; 
@@ -84,19 +93,23 @@ handleChange(event){
     return (
       
 
-      <div style={{ margin: 20, padding: 20, border: '1px solid #DDD', textAlign: "center" }}>
-        <Layout />
+      <div style={{textAlign: "center" }}>
+        <body className={body}> 
+      <div className={logo}>UMW</div>
+      <div className={sublogo}>CPSC Major Opportunities</div>
+      <hr /> 
 
 
 
-      <h2>login</h2>
-        <form  onSubmit={this.handleSubmit}>
+      
+        <form className={formwrapper} onSubmit={this.handleSubmit}>
+        <h2>Login</h2>
         <p>
         
         <input
           id='username'
           style = {this.rounded} 
-          placeholder='email'
+          placeholder='Email'
           type='text'
           
           autoComplete='off'
@@ -109,7 +122,7 @@ handleChange(event){
           id='paswsword'
           style = {this.rounded} 
           type='password'
-          placeholder='password'
+          placeholder='Password'
           autoComplete='off'
           value = {this.state.password}
           onChange={this.handlePasswordChange}
@@ -123,14 +136,17 @@ handleChange(event){
            >
             Submit
         </button>
-       <a href="/create">Create Account</a>
-       <p> </p> 
+       <a href="/create">Create Account</a> 
+       <br />
       <a href="/create">Forgot Password </a>
 
       </form> 
      
 
-        {this.state.user ? <h2> {this.state.user[0].status}</h2> : null}
+        {this.state.user ? <h2 style={this.pstyle}> {this.state.user[0].status} </h2> : null}
+         {this.state.user ? <Link href="/ViewPosts"><button>View Site</button></Link> : null}
+
+        </body>  
         </div>
 
 );

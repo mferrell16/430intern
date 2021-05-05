@@ -29,7 +29,7 @@ app.listen(app.get("port"), () => {
 });
 
 app.get("/reviews", async (req, res) => {
-	const template = "SELECT  * FROM REVIEWS"
+	const template = "SELECT  * FROM REVIEWS WHERE FLAG=0"
 	const response = await pool.query(template);
 	console.log(response.rows); 
 		res.json(response.rows); 
@@ -37,7 +37,7 @@ app.get("/reviews", async (req, res) => {
 	
 })
 app.get("/posts", async (req, res) => {
-	const template = "SELECT  * FROM POSTINGS"
+	const template = "SELECT  * FROM POSTINGS WHERE FLAG=0"
 	const response = await pool.query(template);
 	console.log(response.rows); 
 		res.json(response.rows); 
@@ -65,6 +65,26 @@ app.get("/pendrev", async (req, res) => {
 app.get("/flagrev", async (req, res) => {
 	const idnum = req.query.idnum; 
 	const template = "UPDATE REVIEWS SET Flag=1 WHERE id=$1"
+	const response = await pool.query(template, [idnum]);
+	console.log(response.rows); 
+		res.json("Review has been flagged."); 
+
+	
+})
+
+app.get("/unflagrev", async (req, res) => {
+	const idnum = req.query.idnum; 
+	const template = "UPDATE REVIEWS SET Flag=0 WHERE id=$1"
+	const response = await pool.query(template, [idnum]);
+	console.log(response.rows); 
+		res.json("Review has been flagged."); 
+
+	
+})
+
+app.get("/flagpost", async (req, res) => {
+	const idnum = req.query.idnum; 
+	const template = "UPDATE POSTINGS SET Flag=0 WHERE id=$1"
 	const response = await pool.query(template, [idnum]);
 	console.log(response.rows); 
 		res.json("Review has been flagged."); 

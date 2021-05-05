@@ -28,7 +28,7 @@ const Header = () => (
     
     <h2> </h2> 
     <Link href="/">
-      <a style={linkStyle}>Home</a>
+      <a style={linkStyle}>Logout</a>
     </Link>
 
     <Link href="/postings">
@@ -38,26 +38,6 @@ const Header = () => (
     <Link href="/Reviews">
       <a style={linkStyle}>Reviews</a>
     </Link>
-
- { jsCookie.get("name") ? 
-<Link href="/logout">
-        <a style={linkStyle} >Logout</a>
-      </Link> :
-
-    <Link href="/login">
-      <a style={linkStyle}>post</a>
-    </Link>}
-
- { jsCookie.get("name") ? null: 
-    <Link href="/create">
-      <a style={linkStyle}>Create Account</a>
-    </Link>}
-
-  
-
-      <Link > 
-     <a style={linkStyle}> {jsCookie.get("name")} </a> 
-      </Link>
   </div>
 
 );

@@ -2,6 +2,8 @@ import Layout from "../components/MyLayout";
 import jsCookie from "js-cookie";
 import {subPost} from '../lib/upost'
 import React from "react";
+import { loc, postitle, comp, formwrapper, welcome, active, logo, sublogo, adbutt, postwrapper, body, topnav } from '../styles.module.css';
+import Link from 'next/link';
 
 class Home extends React.Component {
   constructor(props) {
@@ -34,6 +36,23 @@ class Home extends React.Component {
 
 
     }
+
+       this.newsquare2 = {
+ width: "100%",
+  padding: "12px", 
+  border: "1px solid #ccc",
+  "border-radius": "4px",
+  "box-sizing": "border-box",
+  "margin-top": "6px",
+  "margin-bottom": "16px",
+  resize: "vertical",
+  height: "250px"
+
+
+
+    }
+
+
     this.h1 = {
 
       "text-align": "center"
@@ -135,10 +154,26 @@ handleptypeChange(event){
 
   render() {
     return (
-      <div style={{ margin: 20, padding: 20,  border: '1px solid #DDD' }}>
-        <Layout />
-      <h2 style= {this.h1}>Leave a Review </h2>
-        <form  onSubmit={this.handleSubmit}>
+      <div >
+     <body className={body}> 
+      <div className={logo}>UMW</div>
+      <div className={sublogo}>CPSC Major Opportunities</div>
+      <hr /> 
+       <br />
+    <div className={topnav}>
+        <a href="/">Home</a>
+        <a  href="ViewPosts">View Listings</a>
+        <a className={active} href="subpost">Submit a Posting</a>
+        <a href="ViewReviews">View Reviews</a>
+        <a  href="subreview">Submit a Review</a>
+        <br />
+    </div>
+    <br /> 
+
+
+      
+        <form className={formwrapper}  onSubmit={this.handleSubmit}>
+        <h2 style= {this.h1}>Submit a Job Post </h2>
         <p> Company Name 
         
         <input
@@ -178,7 +213,7 @@ handleptypeChange(event){
         <p> Description
         <input
           id='desc'
-          style = {this.newsquare}
+          style = {this.newsquare2}
           type='desc'
           placeholder='Information about the job'
           autoComplete='off'
@@ -226,8 +261,10 @@ handleptypeChange(event){
            >
             Submit
         </button>
-      </form>
         {this.state.user ? <h3> {this.state.user} </h3> : null}
+      </form>
+        
+        </body>
         </div>
 
 );

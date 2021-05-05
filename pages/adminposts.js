@@ -2,12 +2,18 @@ import jsCookie from "js-cookie"
 import Layout from "../components/MyLayout.js";
 import axios from 'axios';
 import Router from "next/router";
+import { loc, postitle, comp, welcome, active, logo, sublogo, adbutt, postwrapper, body, topnav } from '../styles.module.css';
+import Link from 'next/link';
 
 const indexLink = {
   display: "inline",
   textAlign: "center",
   fontSize: "1em",
   textColor: "#000000"
+
+}
+const hstyle = {
+  textColor: "#FFFFFF"
 
 }
 
@@ -48,11 +54,24 @@ class pending extends React.Component {
 	    </head>
 	    <div>
 	    
-		    <Layout>
-				<section>
-					<h1>Postings Awaiting Approval  </h1>
-				</section>
-				<br></br>
+		      
+      <body className={body}> 
+      <div className={logo}>UMW</div>
+      <div className={sublogo}>CPSC Major Opportunities</div>
+      <hr /> 
+       <br />
+    <div className={topnav}>
+        <a href="/">Home</a>
+        <a className={active} href="adminposts">Pending Posts</a>
+        <a href="adminreviews">Flagged Reviews</a>
+        <br />
+    </div>
+    <br /> 
+       
+      
+    
+				<h1 style={hstyle}> Pending Posts </h1>
+			
 				<br></br>
 				<section>
 					{this.state.postings.length > 0 ? (
@@ -98,7 +117,6 @@ class pending extends React.Component {
     			<br />
     			<br /> <br />
             <style jsx>{`
-              h1,
               h2,
               h3,
               h4,
@@ -107,6 +125,10 @@ class pending extends React.Component {
               p {
                 color: #1f618d;          
                 font-family: "Arial";
+              }
+              h1{
+                color: #ffffff; 
+                text-align: center;
               }
     
               .button-style {
@@ -145,7 +167,7 @@ class pending extends React.Component {
     
               a {
                 text-decoration: none;
-                color: blue;
+                color: white;
               }
     
               a:hover {
@@ -173,7 +195,7 @@ class pending extends React.Component {
                 text-align: center; /* Center our text */
               }
             `}</style>
-        </Layout>
+        </body>
       </div>
     </>
     );

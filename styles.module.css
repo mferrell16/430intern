@@ -1,0 +1,177 @@
+.bgWrap {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.bgText {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 3rem;
+  text-align: center;
+  padding-top: 40vh;
+  text-shadow: 1px 1px 1px #3c5c5e;
+}
+
+
+
+.body
+{
+    background-color: #00305e;
+}
+
+.welcome{
+    background-image: url("https://i.imgur.com/DWKJJdB.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.adbutt{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.centextw1{
+    margin: auto;
+    width: 50%;
+    background-color: #00305e;
+}
+
+.centext-wrapper2{
+    margin: auto;
+    width: 350px;
+    background-color: #BABBB1;
+}
+
+.centext{
+    text-align: center;
+    padding: 30px;
+    color: white;
+}
+
+.centext2{
+    text-align: center;
+    padding: 30px;
+    color: black;
+}
+
+.homecap{
+    position: fixed;
+    bottom: 0;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.homecap :visited{
+    text-decoration: none;
+    color: white;
+}
+
+.homecap :active{
+    text-decoration: none;
+    color: white;
+}
+
+.logo
+{
+    color: white;
+    font-family: Georgia;
+    font-size: 96px;
+    position: relative;
+    margin: 0;
+}
+.sublogo
+{
+    color: white;
+    font-family: Georgia, Arial;
+    font-size: 21px;
+    position: relative;
+    margin: 0;
+}
+
+.topnav{
+    background-color: #BABBB1;
+    overflow: hidden;
+}
+
+.topnav a{
+    float: left;
+    color: whitesmoke;
+    text-align: center;
+    padding: 15px 15px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+a.active{
+    background-color: #9fa092;
+}
+
+.topnav a:visited{
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.formwrapper{
+    background-color: #ececec;
+    padding: 15px;
+}
+
+.formwrapper p{
+    padding: 10px;
+}
+
+/* HERE BEGINS THE FORMATTING FOR POSTS SARAH DONT GET LOST */
+
+.postwrapper{
+    background-color: #ececec;
+    padding: 10px 20px;
+}
+
+.postwrapper p{
+    margin: 10px;
+}
+
+.postitle{
+    font-size: 32px;
+}
+
+.comp{
+    font-size: 20px;
+}
+
+.loc{
+    float: right;
+}
+
+/* ADMIN DASHBOARD BUT THIS MIGHT BE TOO COMPLICATED DONT BE AN IDIOT SARAH */
+
+.dashposts{
+    background-color: #ececec;
+    width: 45%;
+    float: left;
+    margin: 1%;
+    padding: 1%;
+}
+
+.appdeny{
+    float: right;
+}
+
+.pendpost{
+    border-style: solid;
+    border-width: 1px;
+    padding: 1%;
+}
+
+.dashrevs{
+    background-color: #ececec;
+    width: 45%;
+    float: right;
+    margin: 1%;
+    padding: 1%;
+}
