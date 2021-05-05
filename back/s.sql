@@ -43,7 +43,7 @@ CREATE TABLE reviews (
   Rdate date NOT NULL 
 );
 
-GRANT SELECT, INSERT, DELETE ON postings to intern430;
+GRANT SELECT, INSERT, UPDATE, DELETE ON postings to intern430;
 GRANT SELECT, INSERT, UPDATE, DELETE ON reviews to intern430;
 GRANT SELECT, INSERT, DELETE ON Login to intern430;
 GRANT USAGE on postings_id_seq to intern430;
